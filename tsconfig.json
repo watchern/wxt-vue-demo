@@ -1,0 +1,11 @@
+{
+  "extends": "./.wxt/tsconfig.json",
+  "compilerOptions": {
+    "noImplicitAny": false, // 允许隐式的 `any` 类型--可以不设置变量类型
+    "strictNullChecks": false, // 允许对变量赋值为 `null` 或 `undefined`。
+    "strictFunctionTypes": false, //允许函数参数之间的宽松类型检查。
+    "strictPropertyInitialization": false, //允许类的属性不进行初始化赋值。
+    "strictBindCallApply": false,//允许松散的函数绑定、调用和应用。
+    "strict": false // 将同时禁用以上所有严格模式。
+  }
+}
