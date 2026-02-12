@@ -7,6 +7,8 @@ export default defineBackground(() => {
     await storage.setItem('session:count', newValue);
   }, 1000);
 
-  console.log(browser.i18n.getMessage('extName'));
+  console.log(browser.i18n.getUILanguage()  ) //  用于获取用户的语言设置。
+  console.log(browser.i18n.getMessage('appName'));
   console.log(i18n.global.t('some-key'));
+  console.log(i18n.global.t('示例'));
 });

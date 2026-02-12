@@ -1,7 +1,7 @@
 import { UseAsyncStateOptions, useAsyncState } from '@vueuse/core';
 import useStorage from './useStorage';
 import { computed, onMounted, onUnmounted, WatchCallback } from 'vue';
-import { Unwatch } from "wxt/dist/storage";
+import { Unwatch } from "wxt/storage";
 
 export default function <
   T extends StorageValue,
@@ -20,15 +20,16 @@ export default function <
   // Listen for changes
   let unwatch: Unwatch;
   onMounted((key: string, cb: WatchCallback<T>) => {
-    if(!key) return
-    unwatch = storage.watch(async (event, changedKey) => {
+    if (!key) return
+    // @ts-expect-error
+    unwatch = storage.watch(async (event: string, changedKey: string) => {
       if (key !== changedKey) return;
       if (event === 'remove') state.value = null;
       else await asyncState.execute();
     }, cb);
   });
   onUnmounted(() => {
-    unwatch?.then((fn) => fn());
+    unwatch();
   });
 
   return {

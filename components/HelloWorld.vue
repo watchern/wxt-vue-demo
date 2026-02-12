@@ -17,6 +17,7 @@ function increment() {
 <template>
   <h1>{{ msg }}</h1>
   <h2>{{ t('some-key') }}</h2>
+  <h2>{{ t('示例') }}</h2>
 
   <div class="card">
     <button type="button" @click="increment">count is {{ count }}</button>
